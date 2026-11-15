@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>📚</text></svg>">
+    <title>Detalle del Evento</title>
+    <link rel="stylesheet" href="estilos.css">
+</head>
+<body class="dark-mode">
+
+    <nav class="navbar">
+        <a href="index.html" class="logo">Mi Proyecto</a>
+        <ul class="nav-links">
+            <li><a href="index.html">Inicio</a></li>
+            <li><a href="linea-tiempo.html" class="activo">Línea de tiempo</a></li>
+            <li><button id="btn-modo" class="btn-modo">☀️ Modo</button></li>
+        </ul>
+    </nav>
+
+    <main class="contenedor-principal">
+        <div style="max-width: 800px; margin: 0 auto 20px auto;">
+            <button id="btn-volver-timeline" class="btn-secundario">&larr; Volver a la Línea de tiempo</button>
+        </div>
+
+        <div style="max-width: 800px; margin: 0 auto;">
+            <div class="contenido" id="detalle-contenido">
+                <p style="text-align: center; color: #94a3b8;">Cargando detalles del evento...</p>
+            </div>
+        </div>
+    </main>
+
+    <footer class="footer">
+        <p>&copy; 2026 &bull; Hecho por <span class="autor-verde">Cleiber Maita y Diego Márquez</span></p>
+    </footer>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            document.getElementById("btn-volver-timeline").addEventListener("click", () => {
+                window.location.href = "linea-tiempo.html";
+            });
+
+            const eventoGuardado = localStorage.getItem("eventoSeleccionado");
+            const contenedorDetalle = document.getElementById("detalle-contenido");
+
+            if (eventoGuardado) {
+                const evento = JSON.parse(eventoGuardado);
+                
+                const imagenHTML = evento.imagen && evento.imagen.trim() !== "" 
+                    ? `<img src="${evento.imagen}" alt="${evento.titulo}" class="img-evento" style="max-height: 450px; width: 100%; height: auto; object-fit: contain; background-color: #0f172a;">` 
+                    : "";
+
+                contenedorDetalle.innerHTML = `
+                    ${imagenHTML}
+                    <span class="fecha">${evento.fecha}</span>
+                    <h1 style="font-size: 2rem; color: #f8fafc; margin: 15px 0;">${evento.titulo}</h1>
+                    <p style="font-size: 1.1rem; color: #cbd5e1; line-height: 1.8;">${evento.descripcion}</p>
+                `;
+            } else {
+                contenedorDetalle.innerHTML = `<p style="text-align: center; color: #ef4444;">No se encontró información para este evento.</p>`;
+            }
+        });
+    </script>
+    <script src="script.js"></script>
+</body>
+</html>

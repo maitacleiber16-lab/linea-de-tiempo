@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>📚</text></svg>">
+    <title>Línea de tiempo</title>
+    <link rel="stylesheet" href="estilos.css">
+</head>
+<body class="dark-mode">
+
+    <nav class="navbar">
+        <a href="index.html" class="logo">Mi Proyecto</a>
+        <ul class="nav-links">
+            <li><a href="index.html">Inicio</a></li>
+            <li><a href="linea-tiempo.html" class="activo">Línea de tiempo</a></li>
+            <li><button id="btn-modo" class="btn-modo">☀️ Modo</button></li>
+        </ul>
+    </nav>
+
+    <main class="contenedor-principal">
+        <div class="cabecera-timeline">
+            <h1 class="titulo-seccion">Línea de tiempo</h1>
+            <button id="btn-volver" class="btn-secundario">&larr; Volver al Inicio</button>
+        </div>
+        
+        <section class="timeline" id="timeline-container">
+        </section>
+    </main>
+
+    <footer class="footer">
+        <p>&copy; 2026 &bull; Hecho por <span class="autor-verde">Cleiber Maita y Diego Márquez</span></p>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
