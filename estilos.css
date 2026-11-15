@@ -322,20 +322,18 @@ body.fade-out {
     transform: translateX(-50%) translateY(0);
 }
 
-/* Insignia / Etapa */
+/* Insignia / Etapa (Modo Claro por defecto) */
 .fecha {
     display: inline-flex;
     align-items: center;
     gap: 6px;
-    background: linear-gradient(135deg, rgba(30, 58, 138, 0.7), rgba(15, 23, 42, 0.9));
-    color: #38bdf8;
+    background-color: #dbeafe;
+    color: #1e40af;
     padding: 4px 12px;
     border-radius: 20px;
     font-size: 0.85rem;
     font-weight: 600;
     letter-spacing: 0.3px;
-    border: 1px solid rgba(56, 189, 248, 0.35);
-    box-shadow: 0 2px 10px rgba(56, 189, 248, 0.15);
     margin-bottom: 10px;
 }
 
@@ -353,7 +351,7 @@ body.fade-out {
 }
 
 /* =========================================
-   MODO OSCURO
+   MODO OSCURO (INTACTO Y PERFECTO)
 ========================================= */
 body.dark-mode {
     background-color: #0b1120;
@@ -392,6 +390,12 @@ body.dark-mode .contexto-breve {
     color: #94a3b8;
 }
 
+body.dark-mode .fecha {
+    background: linear-gradient(135deg, rgba(30, 58, 138, 0.6), rgba(15, 23, 42, 0.8));
+    border: 1px solid rgba(56, 189, 248, 0.3);
+    color: #7dd3fc;
+}
+
 body.dark-mode .evento::after {
     background-color: #0f172a;
     border-color: #38bdf8;
@@ -408,7 +412,7 @@ body.dark-mode .btn-secundario:hover {
 }
 
 /* =========================================
-   FOOTER Y MÓVIL OPTIMIZADO (COMPACTO TIPO APP)
+   FOOTER Y MÓVIL OPTIMIZADO (MODO CLARO Y OSCURO)
 ========================================= */
 .footer {
     background-color: rgba(15, 23, 42, 0.9);
@@ -454,11 +458,12 @@ body.dark-mode .btn-secundario:hover {
         max-width: 100%;
     }
 
+    /* Línea vertical para modo claro móvil */
     .timeline::after {
         left: 18px;
         width: 2.5px;
-        background: linear-gradient(to bottom, #2563eb, #38bdf8);
-        box-shadow: 0 0 6px rgba(56, 189, 248, 0.4);
+        background: linear-gradient(to bottom, #2563eb, #0284c7);
+        box-shadow: 0 0 6px rgba(37, 99, 235, 0.2);
     }
 
     .evento {
@@ -472,23 +477,25 @@ body.dark-mode .btn-secundario:hover {
         left: 0%;
     }
 
+    /* Nodos para modo claro móvil */
     .izquierda::after, .derecha::after {
         left: 9px;
         top: 16px;
         width: 16px;
         height: 16px;
-        background-color: #0b1120;
-        border: 2.5px solid #38bdf8;
-        box-shadow: 0 0 8px rgba(56, 189, 248, 0.8);
+        background-color: #fff;
+        border: 2.5px solid #2563eb;
+        box-shadow: 0 2px 6px rgba(37, 99, 235, 0.2);
     }
 
+    /* Tarjetas ultracompactas en modo claro móvil */
     .contenido {
         padding: 12px 14px;
         border-radius: 10px;
-        background: rgba(30, 41, 59, 0.95);
-        border: 1px solid rgba(56, 189, 248, 0.2);
-        border-top: 3px solid #38bdf8;
-        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+        background: #ffffff;
+        border: 1px solid rgba(148, 163, 184, 0.25);
+        border-top: 3px solid #2563eb;
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
     }
 
     .img-evento {
@@ -501,23 +508,66 @@ body.dark-mode .btn-secundario:hover {
         font-size: 0.68rem;
         padding: 2px 8px;
         margin-bottom: 4px;
-        background: linear-gradient(135deg, rgba(30, 58, 138, 0.85), rgba(15, 23, 42, 0.95));
-        border: 1px solid rgba(56, 189, 248, 0.4);
-        box-shadow: 0 0 8px rgba(56, 189, 248, 0.2);
     }
 
     .contenido h3 {
         font-size: 1rem;
         margin: 2px 0 4px 0;
+        color: #0f172a;
     }
 
     .contexto-breve {
         font-size: 0.82rem;
         line-height: 1.35;
+        color: #475569;
     }
 
     .titulo-seccion {
         font-size: 1.4rem;
         margin-bottom: 10px;
+        color: #0f172a;
+    }
+}
+
+/* =========================================
+   MÓVIL EN MODO OSCURO (Anula colores claros cuando está activo el modo oscuro)
+========================================= */
+@media screen and (max-width: 768px) {
+    body.dark-mode .timeline::after {
+        background: linear-gradient(to bottom, #2563eb, #38bdf8);
+        box-shadow: 0 0 6px rgba(56, 189, 248, 0.4);
+    }
+
+    body.dark-mode .izquierda::after, 
+    body.dark-mode .derecha::after {
+        background-color: #0b1120;
+        border: 2.5px solid #38bdf8;
+        box-shadow: 0 0 8px rgba(56, 189, 248, 0.8);
+    }
+
+    body.dark-mode .contenido {
+        background: rgba(30, 41, 59, 0.95);
+        border: 1px solid rgba(56, 189, 248, 0.2);
+        border-top: 3px solid #38bdf8;
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+    }
+
+    body.dark-mode .fecha {
+        background: linear-gradient(135deg, rgba(30, 58, 138, 0.85), rgba(15, 23, 42, 0.95));
+        color: #7dd3fc;
+        border: 1px solid rgba(56, 189, 248, 0.4);
+        box-shadow: 0 0 8px rgba(56, 189, 248, 0.2);
+    }
+
+    body.dark-mode .contenido h3 {
+        color: #f8fafc;
+    }
+
+    body.dark-mode .contexto-breve {
+        color: #94a3b8;
+    }
+
+    body.dark-mode .titulo-seccion {
+        color: #f8fafc;
     }
 }
