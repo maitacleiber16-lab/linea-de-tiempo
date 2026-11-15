@@ -125,9 +125,10 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 });
 
-// CORRECCIÓN PARA GESTOS MÓVILES (Evita pantalla azul/en blanco al deslizar para regresar)
+// SOLUCIÓN DEFINITIVA PARA GESTOS MÓVILES (Fuerza a mostrar la página al deslizar para regresar)
 window.addEventListener("pageshow", (event) => {
-    if (event.persisted) {
-        document.body.classList.remove("fade-out");
-    }
+    document.body.classList.remove("fade-out");
+    document.body.style.animation = "none";
+    void document.body.offsetHeight; // Forzar reinicio de estilos
+    document.body.style.animation = "";
 });
