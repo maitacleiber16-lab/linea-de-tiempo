@@ -30,7 +30,7 @@ document.addEventListener("DOMContentLoaded", () => {
         document.body.classList.add("fade-out");
         setTimeout(() => {
             window.location.href = urlDestino;
-        }, 330); // Coincide con la duración de la animación CSS
+        }, 330);
     }
 
     // Interceptar clics en los enlaces del menú de navegación
@@ -88,7 +88,7 @@ document.addEventListener("DOMContentLoaded", () => {
                     return eventoObj;
                 });
 
-                timelineContainer.innerHTML = ""; // Limpiamos contenedor
+                timelineContainer.innerHTML = "";
 
                 eventosData.forEach((evento, index) => {
                     const clasePosicion = index % 2 === 0 ? "izquierda" : "derecha";
