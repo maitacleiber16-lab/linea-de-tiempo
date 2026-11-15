@@ -1,4 +1,20 @@
-document.addEventListener("DOMContentLoaded", () => {
+document.addEventListener("DOMContentLoaded", iniciarProyecto);
+
+// Detecta cuando la página se restaura desde la caché (botones del mouse, gestos o historial)
+window.addEventListener("pageshow", (event) => {
+    // Remueve cualquier animación de salida residual para que la pantalla sea visible al instante
+    document.body.classList.remove("fade-out");
+    document.body.style.animation = "none";
+    void document.body.offsetHeight; 
+    document.body.style.animation = "";
+
+    // Si viene de la memoria caché del historial, reinicia la app para asegurar los datos y eventos
+    if (event.persisted) {
+        iniciarProyecto();
+    }
+});
+
+function iniciarProyecto() {
     // 1. GESTIÓN DEL MODO OSCURO
     const btnModo = document.getElementById("btn-modo");
     const currentTheme = localStorage.getItem("theme") || "dark";
@@ -11,16 +27,12 @@ document.addEventListener("DOMContentLoaded", () => {
         if (btnModo) btnModo.textContent = "🌙 Modo";
     }
 
-    if (btnModo) {
+    if (btnModo && !btnModo.hasAttribute("data-listener")) {
+        btnModo.setAttribute("data-listener", "true");
         btnModo.addEventListener("click", () => {
             document.body.classList.toggle("dark-mode");
-            let theme = "light";
-            if (document.body.classList.contains("dark-mode")) {
-                theme = "dark";
-                btnModo.textContent = "☀️ Modo";
-            } else {
-                btnModo.textContent = "🌙 Modo";
-            }
+            let theme = document.body.classList.contains("dark-mode") ? "dark" : "light";
+            btnModo.textContent = theme === "dark" ? "☀️ Modo" : "🌙 Modo";
             localStorage.setItem("theme", theme);
         });
     }
@@ -33,15 +45,18 @@ document.addEventListener("DOMContentLoaded", () => {
         }, 330);
     }
 
-    // Interceptar clics en los enlaces del menú de navegación
+    // Interceptar clics en los enlaces del menú de navegación (evita duplicar eventos)
     document.querySelectorAll(".navbar a").forEach(enlace => {
-        enlace.addEventListener("click", (e) => {
-            const destino = enlace.getAttribute("href");
-            if (destino && destino.endsWith(".html")) {
-                e.preventDefault();
-                navegarConTransicion(destino);
-            }
-        });
+        if (!enlace.hasAttribute("data-listener")) {
+            enlace.setAttribute("data-listener", "true");
+            enlace.addEventListener("click", (e) => {
+                const destino = enlace.getAttribute("href");
+                if (destino && destino.endsWith(".html")) {
+                    e.preventDefault();
+                    navegarConTransicion(destino);
+                }
+            });
+        }
     });
 
     // 2. BOTONES DE REDIRECCIÓN ESPECÍFICOS
@@ -49,22 +64,19 @@ document.addEventListener("DOMContentLoaded", () => {
     const btnVolver = document.getElementById("btn-volver");
     const btnVolverTimeline = document.getElementById("btn-volver-timeline");
 
-    if (btnRedirigir) {
-        btnRedirigir.addEventListener("click", () => {
-            navegarConTransicion("linea-tiempo.html");
-        });
+    if (btnRedirigir && !btnRedirigir.hasAttribute("data-listener")) {
+        btnRedirigir.setAttribute("data-listener", "true");
+        btnRedirigir.addEventListener("click", () => navegarConTransicion("linea-tiempo.html"));
     }
 
-    if (btnVolver) {
-        btnVolver.addEventListener("click", () => {
-            navegarConTransicion("index.html");
-        });
+    if (btnVolver && !btnVolver.hasAttribute("data-listener")) {
+        btnVolver.setAttribute("data-listener", "true");
+        btnVolver.addEventListener("click", () => navegarConTransicion("index.html"));
     }
 
-    if (btnVolverTimeline) {
-        btnVolverTimeline.addEventListener("click", () => {
-            navegarConTransicion("linea-tiempo.html");
-        });
+    if (btnVolverTimeline && !btnVolverTimeline.hasAttribute("data-listener")) {
+        btnVolverTimeline.setAttribute("data-listener", "true");
+        btnVolverTimeline.addEventListener("click", () => navegarConTransicion("linea-tiempo.html"));
     }
 
     // 3. CARGA DINÁMICA DE LA LÍNEA DE TIEMPO DESDE LA BASE DE DATOS
@@ -123,12 +135,4 @@ document.addEventListener("DOMContentLoaded", () => {
                 timelineContainer.innerHTML = `<p style="text-align: center; color: #94a3b8; grid-column: 1/-1;">Error al cargar los eventos desde la base de datos. Verifica tu enlace.</p>`;
             });
     }
-});
-
-// SOLUCIÓN DEFINITIVA PARA GESTOS MÓVILES (Fuerza a mostrar la página al deslizar para regresar)
-window.addEventListener("pageshow", (event) => {
-    document.body.classList.remove("fade-out");
-    document.body.style.animation = "none";
-    void document.body.offsetHeight; // Forzar reinicio de estilos
-    document.body.style.animation = "";
-});
+}
