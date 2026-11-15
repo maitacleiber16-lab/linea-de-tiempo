@@ -408,7 +408,7 @@ body.dark-mode .btn-secundario:hover {
 }
 
 /* =========================================
-   FOOTER Y RESPONSIVE (MEJORADO PARA MÓVILES)
+   FOOTER Y RESPONSIVE (OPTIMIZADO PARA MÓVILES)
 ========================================= */
 .footer {
     background-color: rgba(15, 23, 42, 0.9);
@@ -434,36 +434,44 @@ body.dark-mode .btn-secundario:hover {
     }
 
     .timeline {
-        padding: 30px 0 20px 0;
+        padding: 20px 0;
+        max-width: 100%;
     }
 
-    /* Mueve la línea vertical hacia la izquierda para dar espacio */
     .timeline::after {
-        left: 26px;
+        left: 22px;
+        width: 3px;
     }
 
     .evento {
         width: 100%;
-        padding-left: 56px; /* Espacio limpio para que el texto no pegue con la línea */
-        padding-right: 12px;
-        margin-bottom: 15px;
+        padding-left: 48px;
+        padding-right: 8px;
+        margin-bottom: 20px;
     }
 
     .izquierda, .derecha {
         left: 0%;
     }
 
-    /* Centra perfectamente el círculo indicador sobre la línea */
     .izquierda::after, .derecha::after {
-        left: 15px;
+        left: 12px;
         top: 22px;
+        width: 18px;
+        height: 18px;
+        border-width: 3px;
     }
 
     .contenido {
-        padding: 18px 20px;
+        padding: 16px 18px;
+        border-radius: 10px;
+    }
+
+    .img-evento {
+        height: 150px;
     }
 
     .titulo-seccion {
-        font-size: 1.8rem;
+        font-size: 1.7rem;
     }
 }
