@@ -401,3 +401,26 @@ body.dark-mode .btn-secundario {
     body.dark-mode .contenido .contexto-breve { color: #94a3b8 !important; }
     body.dark-mode .titulo-seccion { color: #f8fafc !important; }
 }
+
+/* =========================================
+   ESTILOS PARA LA PÁGINA DE DETALLE
+========================================= */
+.titulo-detalle {
+    font-size: 2rem;
+    color: #0f172a;
+    margin: 15px 0;
+}
+
+.texto-detalle {
+    font-size: 1.1rem;
+    color: #475569;
+    line-height: 1.8;
+}
+
+body.dark-mode .titulo-detalle {
+    color: #f8fafc;
+}
+
+body.dark-mode .texto-detalle {
+    color: #cbd5e1;
+}
