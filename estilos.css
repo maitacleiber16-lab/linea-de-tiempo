@@ -322,14 +322,20 @@ body.fade-out {
     transform: translateX(-50%) translateY(0);
 }
 
+/* Insignia / Etapa con estética de aplicación moderna */
 .fecha {
-    display: inline-block;
-    background-color: #dbeafe;
-    color: #1e40af;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    background: linear-gradient(135deg, rgba(30, 58, 138, 0.7), rgba(15, 23, 42, 0.9));
+    color: #38bdf8;
     padding: 4px 12px;
     border-radius: 20px;
     font-size: 0.85rem;
-    font-weight: bold;
+    font-weight: 600;
+    letter-spacing: 0.3px;
+    border: 1px solid rgba(56, 189, 248, 0.35);
+    box-shadow: 0 2px 10px rgba(56, 189, 248, 0.15);
     margin-bottom: 10px;
 }
 
@@ -384,12 +390,6 @@ body.dark-mode .titulo-seccion {
 body.dark-mode .cuadro-resumen p,
 body.dark-mode .contexto-breve {
     color: #94a3b8;
-}
-
-body.dark-mode .fecha {
-    background-color: rgba(30, 58, 138, 0.6);
-    border: 1px solid rgba(56, 189, 248, 0.3);
-    color: #7dd3fc;
 }
 
 body.dark-mode .evento::after {
@@ -499,8 +499,11 @@ body.dark-mode .btn-secundario:hover {
 
     .fecha {
         font-size: 0.72rem;
-        padding: 2px 10px;
-        margin-bottom: 6px;
+        padding: 3px 10px;
+        margin-bottom: 8px;
+        background: linear-gradient(135deg, rgba(30, 58, 138, 0.85), rgba(15, 23, 42, 0.95));
+        border: 1px solid rgba(56, 189, 248, 0.4);
+        box-shadow: 0 0 8px rgba(56, 189, 248, 0.2);
     }
 
     .contenido h3 {
