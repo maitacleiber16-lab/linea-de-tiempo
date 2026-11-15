@@ -179,7 +179,7 @@ body.fade-out {
 }
 
 /* =========================================
-   PÁGINA DE LÍNEA DE TIEMPO
+   PÁGINA DE LÍNEA DE TIEMPO (PC)
 ========================================= */
 .contenedor-principal {
     flex: 1;
@@ -322,7 +322,7 @@ body.fade-out {
     transform: translateX(-50%) translateY(0);
 }
 
-/* Insignia / Etapa con estética de aplicación moderna */
+/* Insignia / Etapa */
 .fecha {
     display: inline-flex;
     align-items: center;
@@ -408,7 +408,7 @@ body.dark-mode .btn-secundario:hover {
 }
 
 /* =========================================
-   FOOTER Y RESPONSIVE (MÓVIL OPTIMIZADO TIPO APP)
+   FOOTER Y MÓVIL OPTIMIZADO (COMPACTO TIPO APP)
 ========================================= */
 .footer {
     background-color: rgba(15, 23, 42, 0.9);
@@ -450,22 +450,22 @@ body.dark-mode .btn-secundario:hover {
     }
 
     .timeline {
-        padding: 15px 0;
+        padding: 10px 0;
         max-width: 100%;
     }
 
     .timeline::after {
-        left: 20px;
-        width: 3px;
+        left: 18px;
+        width: 2.5px;
         background: linear-gradient(to bottom, #2563eb, #38bdf8);
-        box-shadow: 0 0 8px rgba(56, 189, 248, 0.5);
+        box-shadow: 0 0 6px rgba(56, 189, 248, 0.4);
     }
 
     .evento {
         width: 100%;
-        padding-left: 42px;
+        padding-left: 38px;
         padding-right: 6px;
-        margin-bottom: 18px;
+        margin-bottom: 14px;
     }
 
     .izquierda, .derecha {
@@ -473,49 +473,51 @@ body.dark-mode .btn-secundario:hover {
     }
 
     .izquierda::after, .derecha::after {
-        left: 10px;
-        top: 20px;
-        width: 18px;
-        height: 18px;
+        left: 9px;
+        top: 16px;
+        width: 16px;
+        height: 16px;
         background-color: #0b1120;
-        border: 3px solid #38bdf8;
-        box-shadow: 0 0 10px rgba(56, 189, 248, 0.8);
+        border: 2.5px solid #38bdf8;
+        box-shadow: 0 0 8px rgba(56, 189, 248, 0.8);
     }
 
     .contenido {
-        padding: 14px 16px;
-        border-radius: 12px;
+        padding: 12px 14px;
+        border-radius: 10px;
         background: rgba(30, 41, 59, 0.95);
         border: 1px solid rgba(56, 189, 248, 0.2);
         border-top: 3px solid #38bdf8;
-        box-shadow: 0 6px 20px rgba(0, 0, 0, 0.35);
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
     }
 
     .img-evento {
-        height: 140px;
-        border-radius: 8px;
-        margin-bottom: 10px;
+        height: 110px;
+        border-radius: 6px;
+        margin-bottom: 8px;
     }
 
     .fecha {
-        font-size: 0.72rem;
-        padding: 3px 10px;
-        margin-bottom: 8px;
+        font-size: 0.68rem;
+        padding: 2px 8px;
+        margin-bottom: 4px;
         background: linear-gradient(135deg, rgba(30, 58, 138, 0.85), rgba(15, 23, 42, 0.95));
         border: 1px solid rgba(56, 189, 248, 0.4);
         box-shadow: 0 0 8px rgba(56, 189, 248, 0.2);
     }
 
     .contenido h3 {
-        font-size: 1.1rem;
-        margin: 4px 0;
+        font-size: 1rem;
+        margin: 2px 0 4px 0;
     }
 
     .contexto-breve {
-        font-size: 0.85rem;
+        font-size: 0.82rem;
+        line-height: 1.35;
     }
 
     .titulo-seccion {
-        font-size: 1.5rem;
+        font-size: 1.4rem;
+        margin-bottom: 10px;
     }
 }
