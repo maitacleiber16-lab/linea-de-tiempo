@@ -5,9 +5,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>📚</text></svg>">
     <title>Detalle del Evento</title>
-    <link rel="stylesheet" href="estilos.css">
+    <link rel="stylesheet" href="estilos.css?v=2">
 </head>
-<body class="dark-mode">
+<body>
 
     <nav class="navbar">
         <a href="index.html" class="logo">Mi Proyecto</a>
@@ -36,9 +36,12 @@
 
     <script>
         document.addEventListener("DOMContentLoaded", () => {
-            document.getElementById("btn-volver-timeline").addEventListener("click", () => {
-                window.location.href = "linea-tiempo.html";
-            });
+            const btnVolverTimeline = document.getElementById("btn-volver-timeline");
+            if (btnVolverTimeline) {
+                btnVolverTimeline.addEventListener("click", () => {
+                    window.location.href = "linea-tiempo.html";
+                });
+            }
 
             const eventoGuardado = localStorage.getItem("eventoSeleccionado");
             const contenedorDetalle = document.getElementById("detalle-contenido");
@@ -47,14 +50,14 @@
                 const evento = JSON.parse(eventoGuardado);
                 
                 const imagenHTML = evento.imagen && evento.imagen.trim() !== "" 
-                    ? `<img src="${evento.imagen}" alt="${evento.titulo}" class="img-evento" style="max-height: 450px; width: 100%; height: auto; object-fit: contain; background-color: #0f172a;">` 
+                    ? `<img src="${evento.imagen}" alt="${evento.titulo}" class="img-evento" style="max-height: 450px; width: 100%; height: auto; object-fit: contain; background-color: #0f172a; border-radius: 8px; margin-bottom: 14px;">` 
                     : "";
 
                 contenedorDetalle.innerHTML = `
                     ${imagenHTML}
                     <span class="fecha">${evento.fecha}</span>
-                    <h1 style="font-size: 2rem; color: #f8fafc; margin: 15px 0;">${evento.titulo}</h1>
-                    <p style="font-size: 1.1rem; color: #cbd5e1; line-height: 1.8;">${evento.descripcion}</p>
+                    <h1 class="titulo-detalle">${evento.titulo}</h1>
+                    <p class="texto-detalle">${evento.descripcion}</p>
                 `;
             } else {
                 contenedorDetalle.innerHTML = `<p style="text-align: center; color: #ef4444;">No se encontró información para este evento.</p>`;
